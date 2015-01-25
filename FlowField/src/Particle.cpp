@@ -1,6 +1,6 @@
 #include "Particle.h"
 
-Particle::Particle(ofPixels & _pix, ofColor & _c, int & _drawMode){
+Particle::Particle(ofPixels* _pix, ofColor & _c, int & _drawMode){
 	pix = _pix;
 	c = _c;
 	drawMode = _drawMode;
@@ -28,6 +28,7 @@ Particle::Particle(ofPixels & _pix, ofColor & _c, int & _drawMode){
 
 	// randomly set a life and lifeRate for each Particle
 	life = ofRandom(0.5 * maxLife, maxLife);
+    life = maxLife;
 	lifeRate = ofRandom(0.01, 0.02);
 }
 
@@ -70,5 +71,11 @@ void Particle::getPosition(){
 
 //--------------------------------------------------------------
 bool Particle::isInText(){
-	return (pix.getColor(loc.x, loc.y) == c);
+    if(pix)
+    {
+      return (pix->getColor(loc.x, loc.y) == c);
+    }else{
+        return false;
+    }
+	
 }

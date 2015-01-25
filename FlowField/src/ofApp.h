@@ -24,6 +24,6 @@ class ofApp : public ofBaseApp {
 		ofFbo fbo;
 		ofPixels pix;
 
-		vector <Particle> particles;
+		vector <Particle*> particles;
 		bool bReset;
 };
